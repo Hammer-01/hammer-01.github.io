@@ -1,4 +1,4 @@
-fetch("https://api.github.com/users/hammer-01")
+fetch("https://api.github.com/users/hammer-01/repos")
   .then(function(response) {
     return response.text();
   })
