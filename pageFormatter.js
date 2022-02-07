@@ -10,7 +10,7 @@ let pageData = fetch("https://api.github.com/users/hammer-01/repos", {
           if (repo.has_pages && repo.name !== window.location.hostname) pages.push(repo);
       }
       return pages;
-  })
-  .pop();
+  });
+//   .pop();
 
 console.log(pageData);
