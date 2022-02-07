@@ -1,4 +1,11 @@
-console.log(fetch("https://www.google.com/robots.txt"), {mode: 'cors'}); // https://api.github.com/users/hammer-01
+console.log(fetch("https://api.github.com/users/hammer-01"), { // https://www.google.com/robots.txt
+});
+
+
+
+
+
+
 //   .then(function(response) {
 //   return response.text();
 //   })
