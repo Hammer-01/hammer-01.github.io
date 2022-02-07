@@ -12,4 +12,4 @@ let jsonData = fetch("https://api.github.com/users/hammer-01/repos", {
       return pages;
   });
 
-console.log(jsonData);
+// console.log(jsonData);
