@@ -1,5 +1,5 @@
 let jsonData = await fetch("https://api.github.com/users/hammer-01/repos", {
-    method: 'get',
+    method: 'GET',
     headers: {
         'Accept': 'application/json'
     }
