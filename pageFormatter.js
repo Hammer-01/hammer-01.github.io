@@ -13,7 +13,7 @@ fetch("https://api.github.com/users/hammer-01/repos", {
         return pages;
     })
     .then(pages => {
-        let pageList = document.getElementById("ul");
+        let pageList = document.getElementById("pageList");
         for (let page of pages) {
             fetch(window.location.href + page.name)
                 .then(response => response.text())
