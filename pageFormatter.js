@@ -16,7 +16,7 @@ fetch("https://api.github.com/users/hammer-01/repos", {
         for (let page of pages) {
             fetch(window.location.href + "/" + page.name)
                 .then(response => response.text())
-                .then(data => data.match(/<title>(.+)<\/title>/)
+                .then(data => data.match(/<title>(.+)<\/title>/))
                 .then(title => console.log(title));
         }
     });
