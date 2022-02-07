@@ -1,4 +1,4 @@
-console.log(fetch("https://www.google.com/robots.txt"), { // https://api.github.com/users/hammer-01
+console.log(fetch("https://api.github.com/users/hammer-01"), {
 });
 
 
