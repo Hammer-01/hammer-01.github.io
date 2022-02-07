@@ -1,6 +1,6 @@
 console.log(fetch("https://api.github.com/users/hammer-01"))
   .then(function(response) {
-  return response.text();
+  return response.body();
   })
   .then(function(data){
     console.log(data); //this will just be text
