@@ -1,4 +1,4 @@
-let jsonData = fetch("https://api.github.com/users/hammer-01/repos", {
+let jsonData = await fetch("https://api.github.com/users/hammer-01/repos", {
     method: 'get',
     headers: {
         'Accept': 'application/json'
