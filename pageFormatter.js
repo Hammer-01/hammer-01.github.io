@@ -1,7 +1,8 @@
 fetch("https://api.github.com/users/hammer-01")
   .then(function(response) {
-    console.log(response.text());
-    return response.text();
+    let txt = response.text();
+    console.log(txt);
+    return txt;
   })
   .then(function(data){
 //     console.log(data); //this will just be text
