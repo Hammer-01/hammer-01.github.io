@@ -13,8 +13,8 @@ fetch("https://api.github.com/users/hammer-01/repos", {
         return pages;
     })
     .then(pages => {
-        pages.forEach(v => console.log(v));
+        pages.forEach(v => console.log(v.name));
     });
 
 
-console.log(console.log(hi));
+console.log(console.log('hi'));
