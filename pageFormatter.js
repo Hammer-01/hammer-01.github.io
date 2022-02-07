@@ -1,4 +1,4 @@
-let jsonData = fetch("https://api.github.com/users/hammer-01/repos", {
+let pageData = fetch("https://api.github.com/users/hammer-01/repos", {
     method: 'GET',
     headers: {
         'Accept': 'application/json'
@@ -10,6 +10,7 @@ let jsonData = fetch("https://api.github.com/users/hammer-01/repos", {
           if (repo.has_pages && repo.name !== window.location.hostname) pages.push(repo);
       }
       return pages;
-  });
+  })
+  .pop();
 
-// console.log(jsonData);
+console.log(pageData);
