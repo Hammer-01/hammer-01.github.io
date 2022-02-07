@@ -3,7 +3,7 @@ let jsonData = fetch("https://api.github.com/users/hammer-01/repos", {
     headers: {
         'Accept': 'application/json'
     }
-}).then(response => response.text())
+}).then(response => response.json())
   .then(data => JSON.parse(data));
 
 console.log(jsonData);
