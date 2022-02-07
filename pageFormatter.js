@@ -7,7 +7,7 @@ let jsonData = fetch("https://api.github.com/users/hammer-01/repos", {
   .then(json => {
       let pages = [];
       for (let repo of json) {
-          if (repo.has_pages) pages.push(repo);
+          if (repo.has_pages && repo.html_url !== window.location.href) pages.push(repo);
       }
       return pages;
   });
