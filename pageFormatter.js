@@ -13,10 +13,14 @@ fetch("https://api.github.com/users/hammer-01/repos", {
         return pages;
     })
     .then(pages => {
+        let pageList = document.getElementById("ul");
         for (let page of pages) {
             fetch(window.location.href + page.name)
                 .then(response => response.text())
                 .then(data => data.match(/<title>(.+)<\/title>/)[1])
-                .then(title => console.log(title));
+                .then(title => {
+                    console.log(title);
+                    pageList.innerHTML += `<a href="${page.name}">${title}</a><br>`;
+                });
         }
     });
