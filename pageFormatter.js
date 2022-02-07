@@ -1,6 +1,6 @@
-console.log(fetch("https://api.github.com/users/hammer-01"))
+console.log(fetch("https://google.com/robots.txt")) // https://api.github.com/users/hammer-01
   .then(function(response) {
-  return response.body();
+  return response.text();
   })
   .then(function(data){
     console.log(data); //this will just be text
