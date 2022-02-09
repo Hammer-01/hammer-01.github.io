@@ -21,6 +21,7 @@ fetch("https://api.github.com/users/hammer-01/repos", {
                 .then(title => {
                     console.log(title);
                     pageList.innerHTML += `<a href="${page.name}">${title}</a><br>`;
+                    if (page.description) pageList.innerHTML += `<p>\t${page.description}</p>`;
                 });
         }
     });
