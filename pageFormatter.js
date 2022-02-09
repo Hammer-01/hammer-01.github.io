@@ -19,10 +19,9 @@ fetch("https://api.github.com/users/hammer-01/repos", {
                 .then(response => response.text())
                 .then(data => data.match(/<title>(.+)<\/title>/)[1])
                 .then(title => {
-                    console.log(title);
-                    pageList.innerHTML += `<p><a href="${page.name}">${title}</a>`;
-                    if (page.description) pageList.innerHTML += ` - ${page.description}`;
-                    pageList.innerHTML += '</p>';
+                    let listValue = `<p><a href="${page.name}">${title}</a>`;
+                    if (page.description) listValue += ` - ${page.description}`;
+                    pageList.innerHTML += listValue + '</p>';
                 });
         }
     });
