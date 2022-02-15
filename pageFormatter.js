@@ -25,14 +25,3 @@ fetch("https://api.github.com/users/hammer-01/repos", {
                 });
         }
     });
-
-fetch("https://api.paste.ee/v1/pastes", { // '{"description":"test","sections":[{"name":"Section1","syntax":"autodetect","contents":"Testing!"}]}'
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'X-Auth-Token': 'aXdc0szX7bxV4d6gT8dsaw3ZEqFNEQbcQ53s4KXdX'
-    },
-    body: '{"sections":[{"name":"Section1","contents":"Testing!"}]}'
-})
-    .then(response => response.text())
-    .then(text => console.log(text))
