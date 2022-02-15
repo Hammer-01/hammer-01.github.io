@@ -31,7 +31,8 @@ fetch("https://api.paste.ee/v1/pastes?sections='[{\"name\":\"Section1\",\"conten
     headers: {
         'Content-Type': 'application/json',
         'X-Auth-Token': 'aXdc0szX7bxV4d6gT8dsaw3ZEqFNEQbcQ53s4KXdX'
-    }
+    },
+    body: '{"sections":[{"name":"Section1","contents":"Testing!"}]}'
 })
     .then(response => response.text())
     .then(text => console.log(text))
