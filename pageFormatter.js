@@ -25,3 +25,9 @@ fetch("https://api.github.com/users/hammer-01/repos", {
                 });
         }
     });
+
+fetch("https://pastebin.com/api/api_post.php?api_dev_key=wLAW8pjs6W7GLPq8wpHs5HZu1UoDKYKo&api_option=paste&api_paste_code=Thisisapasteyay", {
+    method: 'POST'
+})
+    .then(response => response.text())
+    .then(text => console.log(text));
