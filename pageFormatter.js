@@ -26,7 +26,7 @@ fetch("https://api.github.com/users/hammer-01/repos", {
         }
     });
 
-fetch("https://api.paste.ee/v1/pastes?sections='[{\"name\":\"Section1\",\"syntax\":\"autodetect\",\"contents\":\"Testing!\"}]'", { // '{"description":"test","sections":[{"name":"Section1","syntax":"autodetect","contents":"Testing!"}]}'
+fetch("https://api.paste.ee/v1/pastes?sections='[{\"name\":\"Section1\",\"contents\":\"Testing!\"}]'", { // '{"description":"test","sections":[{"name":"Section1","syntax":"autodetect","contents":"Testing!"}]}'
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
