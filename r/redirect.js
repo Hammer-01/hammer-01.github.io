@@ -1,5 +1,3 @@
-let redirects = await fetch('./redirects.json').then(response => response.json());
-console.log(redirects);
 console.log(`Referrer: ${window.location.referrer}`);
 console.log(`Redirect url: ${window.location.search}`);
 let url = window.location.search.match(/^[^.\/]+:/) === "s:" ? redirects[window.location.search.indexOf(':')] : (window.location.search.match(/^[^.\/]+:/) ? "" : "http://") + window.location.search.slice(1);
