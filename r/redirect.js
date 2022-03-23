@@ -1,3 +1,4 @@
+import redirects from "./redirects.json";
 console.log(`Referrer: ${window.location.referrer}`);
 console.log(`Redirect url: ${window.location.search}`);
 let protocol = window.location.search.match(/^[^.\/]+:/) ? "" : "http://";
