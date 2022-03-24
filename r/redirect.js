@@ -1,4 +1,6 @@
-// TODO: Add bookmarklet special case (protocol == javascript:)
+// TODO: 
+//   Add window.location.href = [redirecturl] after a few seconds, to automatically redirect. 
+//   Add bookmarklet special case (protocol == javascript:)
 console.log(`Referrer: ${window.location.referrer}`);
 console.log(`Redirect url: ${window.location.search}`);
 let search = window.location.search.slice(1);
