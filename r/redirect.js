@@ -9,5 +9,11 @@ let dispUrl = protocol == "_:" ? search.slice(2) : search;
 let url = protocol == "_:" ? redirects[dispUrl] : (protocol ? "" : "//") + dispUrl;
 let pageContent = document.referrer ? `A link from the page: <a href="${document.referrer}">${document.referrer}</a> wants to redirect you.<br>` : "";
 pageContent += `Click to redirect to <a href="${url}">${dispUrl}</a>.<br>`;
-if (document.referrer) pageContent += `If you do not want to visit that page, you can <a href="javascript:window.history.back()">return to the previous page</a>.`;
+if (document.referrer) pageContent += `If you do not want to visit that page, you can <a href="javascript:window.history.back()">return to the previous page</a>.<br>`;
+pageContent += `You will be automatically redirected in <span id="countdown">5</span> seconds.`
 document.body.innerHTML = pageContent;
+setInterval(() => {
+    let num = document.getElementbyId('countdown');
+    num.text = num.text - 1;
+    if (num.text === '0') window.location.href = url;
+}, 1000);
