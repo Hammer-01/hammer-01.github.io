@@ -13,7 +13,7 @@ if (document.referrer) pageContent += `If you do not want to visit that page, yo
 pageContent += `You will be automatically redirected in <span id="countdown">5</span> seconds.`
 document.body.innerHTML = pageContent;
 setInterval(() => {
-    let num = document.getElementbyId('countdown');
+    let num = document.getElementById('countdown');
     num.text = num.text - 1;
     if (num.text === '0') window.location.href = url;
 }, 1000);
