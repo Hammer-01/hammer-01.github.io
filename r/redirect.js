@@ -2,12 +2,14 @@ console.log(`Referrer: ${window.location.referrer}`);
 console.log(`Redirect url: ${window.location.search}`);
 let search = window.location.search.slice(1);
 let protocol = search.match(/^(\w+:|\/\/)/g);
-let dispUrl = protocol == "_:" ? search.slice(2) : search;
-let url = protocol == "_:" ? redirects[dispUrl] : (protocol ? "" : "//") + dispUrl;
+let customRedirect = protocol == "_:";
+let dispUrl = customRedirect ? search.slice(2) : search;
+let url = customRedirect ? redirects[dispUrl] : (protocol ? "" : "//") + dispUrl;
 let pageContent = document.referrer ? `A link from the page: <a href="${document.referrer}">${document.referrer}</a> ` : "";
 if (url.slice(0, 11) === "javascript:") {
+    document.title = customRedirect ? dispUrl : "Bookmarklet";
     pageContent += document.referrer ? "has directed you to this bookmarklet: <br>" : "Below is a bookmarklet - a piece of javascript code that runs when you click it.<br>";
-    pageContent += `Drag <a href="${url}">${protocol=="_:"?dispUrl:"this link"}</a> to your bookmark bar to save it.<br><br>`;
+    pageContent += `Drag <a href="${url}">${customRedirect?dispUrl:"this link"}</a> to your bookmark bar to save it.<br><br>`;
     pageContent += "The code for the bookmarklet is: <br>";
     pageContent += `<textarea id="bookmarklet-code" cols="60" rows="20"></textarea>`
     document.body.innerHTML = pageContent;
