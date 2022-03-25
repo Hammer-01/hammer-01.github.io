@@ -1,5 +1,3 @@
-console.log(`Referrer: ${window.location.referrer}`);
-console.log(`Redirect url: ${window.location.search}`);
 let search = window.location.search.slice(1);
 let protocol = search.match(/^(\w+:|\/\/)/g);
 let customRedirect = protocol == "_:";
