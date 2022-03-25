@@ -8,13 +8,13 @@ let url = customRedirect ? redirects[dispUrl] : (protocol ? "" : "//") + dispUrl
 let pageContent = document.referrer ? `A link from the page: <a href="${document.referrer}">${document.referrer}</a> ` : "";
 if (url.slice(0, 11) === "javascript:") {
     document.title = customRedirect ? dispUrl : "Bookmarklet";
-    if (customRedirect) url = "javascript:" + encodeURIComponent(url.slice(11));
+    if (customRedirect) url = url.replace('"', '%22'); //"javascript:" + encodeURIComponent(url.slice(11));
     pageContent += document.referrer ? "has directed you to this bookmarklet: <br>" : "Below is a bookmarklet - a piece of javascript code that runs when you click it.<br>";
     pageContent += `Drag <a href="${url}">${customRedirect?dispUrl:"this link"}</a> to your bookmark bar to save it.<br><br>`;
     pageContent += "The code for the bookmarklet is: <br>";
     pageContent += `<textarea id="bookmarklet-code" cols="60" rows="20"></textarea>`
     document.body.innerHTML = pageContent;
-    document.getElementById('bookmarklet-code').textContent = decodeURIComponent(url);
+    document.getElementById('bookmarklet-code').textContent = url; //decodeURIComponent(url);
 } else {
     if (document.referrer) pageContent += "wants to redirect you.<br>";
     pageContent += `Click to redirect to <a href="${url}">${dispUrl}</a>.<br>`;
