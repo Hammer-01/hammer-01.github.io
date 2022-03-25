@@ -8,6 +8,7 @@ let url = customRedirect ? redirects[dispUrl] : (protocol ? "" : "//") + dispUrl
 let pageContent = document.referrer ? `A link from the page: <a href="${document.referrer}">${document.referrer}</a> ` : "";
 if (url.slice(0, 11) === "javascript:") {
     document.title = customRedirect ? dispUrl : "Bookmarklet";
+    if (customRedirect) url = encodeURIComponent(url);
     pageContent += document.referrer ? "has directed you to this bookmarklet: <br>" : "Below is a bookmarklet - a piece of javascript code that runs when you click it.<br>";
     pageContent += `Drag <a href="${url}">${customRedirect?dispUrl:"this link"}</a> to your bookmark bar to save it.<br><br>`;
     pageContent += "The code for the bookmarklet is: <br>";
