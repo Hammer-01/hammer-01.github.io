@@ -5,7 +5,7 @@ let protocol = search.match(/^(\w+:|\/\/)/g);
 let dispUrl = protocol == "_:" ? search.slice(2) : search;
 let url = protocol == "_:" ? redirects[dispUrl] : (protocol ? "" : "//") + dispUrl;
 let pageContent = document.referrer ? `A link from the page: <a href="${document.referrer}">${document.referrer}</a> ` : "";
-if (protocol == "javascript:") {
+if (url.slice(0, 11) === "javascript:") {
     pageContent += document.referrer ? "has directed you to this bookmarklet: <br>" : "Below is a bookmarklet - a piece of javascript code that runs when you click it.<br>";
     pageContent += `Drag <a href="${url}">this link</a> to your bookmark bar to save it.<br><br>`;
     pageContent += "The code for the bookmarklet is: <br>";
