@@ -23,6 +23,9 @@ if (protocol == "javascript:") {
     setInterval((num) => {
         num.textContent = num.textContent - 1;
         if (num.textContent === '1') document.getElementById('sec').textContent = '';
-        if (num.textContent === '0') document.getElementById('sec').textContent = 's'; window.location.href = url;
+        if (num.textContent === '0') {
+            document.getElementById('sec').textContent = 's';
+            window.location.href = url;
+        }
     }, 1000, document.getElementById('countdown'));
 }
