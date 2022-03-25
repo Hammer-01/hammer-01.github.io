@@ -12,8 +12,7 @@ pageContent += `Click to redirect to <a href="${url}">${dispUrl}</a>.<br>`;
 if (document.referrer) pageContent += `If you do not want to visit that page, you can <a href="javascript:window.history.back()">return to the previous page</a>.<br>`;
 pageContent += `You will be automatically redirected in <span id="countdown">5</span> seconds.`
 document.body.innerHTML = pageContent;
-setInterval(() => {
-    let num = document.getElementById('countdown');
-    num.text = num.text - 1;
+setInterval((num) => {
+    num.textContent = num.textContent - 1;
     if (num.text === '0') window.location.href = url;
-}, 1000);
+}, 1000, document.getElementById('countdown'));
