@@ -14,5 +14,5 @@ pageContent += `You will be automatically redirected in <span id="countdown">5</
 document.body.innerHTML = pageContent;
 setInterval((num) => {
     num.textContent = num.textContent - 1;
-    if (num.text === '0') window.location.href = url;
+    if (num.textContent === '0') window.location.href = url;
 }, 1000, document.getElementById('countdown'));
