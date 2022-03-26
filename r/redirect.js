@@ -5,8 +5,8 @@ let dispUrl = customRedirect ? search.slice(2) : search;
 let url = customRedirect ? redirects[dispUrl] : (protocol ? "" : "//") + dispUrl;
 let pageContent = document.referrer ? `A link from the page: <a href="${document.referrer}">${document.referrer}</a> ` : "";
 if (!url || !search) {
-    if (document.referrer) pageContent += "has sent you to a dead link.<br>" : "Error: Invalid link.<br>";
-    pageContent += `You can <a href="javascript:window.history.back()">return to the previous page</a>.`;
+    pageContent += document.referrer ? "has sent you to a dead link.<br>" : "Error: Invalid link.<br>";
+    if (document.referrer) pageContent += `You can <a href="javascript:window.history.back()">return to the previous page</a>.`;
     document.body.innerHTML = pageContent;
 } else if (url.slice(0, 11) === "javascript:") {
     document.title = customRedirect ? dispUrl : "Bookmarklet";
