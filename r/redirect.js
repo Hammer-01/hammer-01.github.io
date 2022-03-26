@@ -14,9 +14,9 @@ if (url.slice(0, 11) === "javascript:") {
         pageContent += `<a href="javascript:(function(){fetch('https://hammer-01.github.io/r/redirects.js').then(response=>{if (response.ok){return response.text()} ${url}; return '123456789012{%22${dispUrl}%22:%22%22}'}).then(text=>eval(eval('('+text.slice(12)+')')['${dispUrl}']))})()">${dispUrl}</a><br>`;
     }
     pageContent += "<br>The code for the bookmarklet is: <br>";
-    pageContent += `<textarea id="bookmarklet-code" cols="60" rows="20"></textarea>`
+    pageContent += `<textarea id="bookmarklet-code" cols="60" rows="20" spellcheck="false">${decodeURIComponent(url)}</textarea>`
     document.body.innerHTML = pageContent;
-    document.getElementById('bookmarklet-code').textContent = decodeURIComponent(url);
+    //document.getElementById('bookmarklet-code').textContent = decodeURIComponent(url);
 } else {
     if (document.referrer) pageContent += "wants to redirect you.<br>";
     pageContent += `Click to redirect to <a href="${url}">${dispUrl}</a>.<br>`;
