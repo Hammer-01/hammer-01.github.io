@@ -3,7 +3,7 @@ let search = window.location.search.slice(1);
 let protocol = search.match(/^(\w+:|\/\/)/g);
 let customRedirect = protocol == "_:";
 let dispUrl = customRedirect ? decodeURIComponent(search.slice(2)) : search;
-if (customRedirect) let redirects = JSON.parse(await fetch('https://hammer-01.github.io/r/redirects.json').then(r => r.text()));
+if (customRedirect) let redirects = await fetch('https://hammer-01.github.io/r/redirects.json').then(r => r.json());
 let url = customRedirect ? redirects[dispUrl] : (protocol ? "" : "//") + dispUrl;
 let pageContent = document.referrer ? `<p>A link from the page: <a href="${document.referrer}">${document.referrer}</a> ` : "";
 if (!url || !search) {
