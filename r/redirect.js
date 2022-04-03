@@ -1,3 +1,4 @@
+(async function() { // allow use of await
 let search = window.location.search.slice(1);
 let protocol = search.match(/^(\w+:|\/\/)/g);
 let customRedirect = protocol == "_:";
@@ -37,3 +38,4 @@ if (!url || !search) {
         }
     }, 1000, document.getElementById('countdown'));
 }
+})();
