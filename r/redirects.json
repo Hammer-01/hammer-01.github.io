@@ -10,5 +10,5 @@
     
     "//":"Bookmarklets from Jesse's Bookmarklets Site",
     "View Selection in New Tab": "javascript:(function(){ var d=open().document; d.title='Selection'; if (window.getSelection) { /*Moz*/ var s = getSelection(); for(i=0; i<s.rangeCount; ++i) { var a, r = s.getRangeAt(i); if (!r.collapsed) { var x = document.createElement('div'); x.appendChild(r.cloneContents()); if (d.importNode) x = d.importNode(x, true); d.body.appendChild(x); } } } else { /*IE*/ d.body.innerHTML = document.selection.createRange().htmlText; } })();",
-    "Zap Cookies": "javascript:(function(){C=document.cookie.split('; ');for(d='.'+location.host;d;d=(''+d).slice(1).match(/\..*$/))for(sl=0;sl<2;++sl)for(p='/'+location.pathname;p;p=p.substring(0,p.lastIndexOf('/')))for(i in C)if(c=C[i]){document.cookie=c+'; domain='+d.slice(sl)+'; path='+p.slice(1)+'/'+'; expires='+new Date((new Date).getTime()-1e11).toGMTString()}})()"
+    "Zap Cookies": "javascript:(function(){C=document.cookie.split('; ');for(d='.'+location.host;d;d=(''+d).slice(1).match(/\\..*$/))for(sl=0;sl<2;++sl)for(p='/'+location.pathname;p;p=p.substring(0,p.lastIndexOf('/')))for(i in C)if(c=C[i]){document.cookie=c+'; domain='+d.slice(sl)+'; path='+p.slice(1)+'/'+'; expires='+new Date((new Date).getTime()-1e11).toGMTString()}})()"
 }
