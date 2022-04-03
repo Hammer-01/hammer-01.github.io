@@ -17,7 +17,7 @@ if (!url || !search) {
     pageContent += `<p>Drag <a href="${url}">${customRedirect?dispUrl:"this link"}</a> to your bookmark bar to save it.</p>`;
     if (customRedirect) {
         pageContent += "<p>Or you can drag this link instead to always have the latest version:</p>";
-        pageContent += `<p><a href="javascript:(function(){fetch('https://hammer-01.github.io/r/redirects.js').then(response=>{if (response.ok){return response.text()} ${url}; return false;}).then(text=>{if(text){eval(eval('('+text+')')['${dispUrl}'])}})})()">${dispUrl}</a></p>`;
+        pageContent += `<p><a href="javascript:(function(){fetch('https://hammer-01.github.io/r/redirects.js').then(response=>{if(response.ok){return response.text()} ${url}; return false;}).then(text=>{if(text){eval(eval('('+text+')')['${dispUrl}'])}})})()">${dispUrl}</a></p>`;
     }
     pageContent += "<p><br>The code for the bookmarklet is:</p>";
     pageContent += `<textarea id="bookmarklet-code" cols="60" rows="20" spellcheck="false">${decodeURIComponent(url)}</textarea>`
