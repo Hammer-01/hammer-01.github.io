@@ -1,6 +1,3 @@
-// Fix weird rendering bug on mobile
-window.onload = () => {console.log('loaded!'); document.body.innerHTML = document.body.innerHTML};
-
 fetch("https://api.github.com/users/hammer-01/repos", {
     method: 'GET',
     headers: {
@@ -25,6 +22,9 @@ fetch("https://api.github.com/users/hammer-01/repos", {
                     let listValue = `<p><a href="${page.name}">${title}</a>`;
                     if (page.description) listValue += ` - ${page.description}`;
                     pageList.innerHTML += listValue + '</p>';
+                    
+                    // Fix weird rendering bug on mobile
+                    if (!pageList.innerText.includes('\n')) document.body.innerHTML = document.body.innerHTML;
                 });
         }
     });
