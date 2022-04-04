@@ -1,3 +1,6 @@
+// Fix weird rendering bug on mobile
+document.body.innerHTML = document.body.innerHTML;
+
 fetch("https://api.github.com/users/hammer-01/repos", {
     method: 'GET',
     headers: {
