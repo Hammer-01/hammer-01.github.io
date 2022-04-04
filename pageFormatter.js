@@ -1,5 +1,5 @@
 // Fix weird rendering bug on mobile
-window.onload = () => document.body.innerHTML = document.body.innerHTML;
+window.onload = function() {document.body.innerHTML = document.body.innerHTML};
 
 fetch("https://api.github.com/users/hammer-01/repos", {
     method: 'GET',
