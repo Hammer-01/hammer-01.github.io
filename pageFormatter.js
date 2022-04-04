@@ -24,7 +24,7 @@ fetch("https://api.github.com/users/hammer-01/repos", {
                     pageList.innerHTML += listValue + '</p>';
                     
                     // Fix weird rendering bug on mobile
-                    if (!pageList.innerText.includes('\n')) document.body.innerHTML = document.body.innerHTML;
+                    if (!pageList.innerText.includes('\n')) {console.log('fixing');document.body.innerHTML = document.body.innerHTML;}
                 });
         }
     });
