@@ -29,7 +29,8 @@ window.onload = () => {
                     // Run for last list item only
                     if (pageList.childElementCount === pages.length + numListItems) {
                         document.getElementsByClassName('loader')[0].remove(); // Remove loader
-                        document.body.innerHTML = document.body.innerHTML; // Fix weird rendering bug on mobile
+                        // Fix weird rendering bug on mobile by reloading document.body
+                        if (navigator.userAgentData.mobile) document.body.innerHTML = document.body.innerHTML;
                     }
                 });
         }
