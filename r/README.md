@@ -1,2 +1,2 @@
 # redirect
-A test for a redirect/url shortener
+A redirect page/url shortener/bookmarklet distribution page
