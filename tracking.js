@@ -4,7 +4,7 @@
         method: 'POST',
         body: JSON.stringify({
             timestamp: new Date(),
-            data: await fetch('https://api.ipregistry.co/?key=tryout').then(r => r.json()) // get user informaton
+            data: await fetch('https://api.ipregistry.co/?key=tryout').then(r => r.json()) // get user information
         })
     })
 })()
