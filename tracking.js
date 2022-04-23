@@ -11,4 +11,4 @@
             data: await getUserData('tryout', 'qrwrxvw05sbmqynn') // get user information
         })
     });
-})()
+})();
