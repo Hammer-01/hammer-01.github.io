@@ -4,6 +4,9 @@
         method: 'POST',
         body: JSON.stringify({
             timestamp: new Date(),
+            pageTitle: document.title,
+            url: window.location.href,
+            referrer: document.referrer,
             data: await fetch('https://api.ipregistry.co/?key=tryout').then(r => r.json()) // get user information
         })
     })
