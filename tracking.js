@@ -1,4 +1,5 @@
 (async function() {
+    try {
     let getUserData = keys => fetch(`https://api.ipregistry.co/?key=${keys.shift()}`).then(r => r.ok ? r.json() : (keys.length ? getUserData(keys) : null));
     fetch('https://hammer-tracking.web.app', {mode: 'no-cors'}); // log to firebase cloud
     fetch('https://hammer-4e70b-default-rtdb.firebaseio.com/tracking.json', { // log detailed user information to realtime database for analytics
@@ -11,4 +12,7 @@
             data: await getUserData('tryout', 'qrwrxvw05sbmqynn') // get user information
         })
     })
+    catch(e) {
+        alert(e);
+    }
 })()
