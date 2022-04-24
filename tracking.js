@@ -8,7 +8,7 @@
             pageTitle: document.title,
             url: window.location.href,
             referrer: document.referrer,
-            data: await getUserData('tryout', 'qrwrxvw05sbmqynn') ?? {userAgent: navigator.userAgent, userAgentData: navigator.userAgentData} // get user information
+            data: await getUserData('tryout', 'qrwrxvw05sbmqynn') || {userAgent: navigator.userAgent, userAgentData: navigator.userAgentData} // get user information
         })
     });
 })();
