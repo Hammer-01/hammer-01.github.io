@@ -7,7 +7,7 @@
     "Distraction Free YouTube": "javascript:(function(){window.location.search.slice(1).split('&').forEach(i=>{var ia=i.split('='); if(ia[0]==='v'){var yt = window.open('','_self'); yt.document.write('<title>'+document.title+'</title><center style=\"transform: translateY(15%)\"><iframe width=\"75%\" height=\"75%\" src=\"https://youtube.com/embed/'+ia[1]+'?autoplay=1\" frameborder=\"no\" /></center>');}})})()",
     "Joke": "javascript:fetch('https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,racist,religious,explicit&format=txt').then(response => response.text()).then(text => alert(text))",
     "Edit Page": "javascript:document.designMode='on'; document.body.spellcheck=confirm('Spellcheck?');",
-    "Unlock Journal": "javascript:window.open('https://sci-hub.se/'+(window.location.hostname=='www.sciencedirect.com'?'https://doi.org/'+document.querySelector('meta[name=\"citation_doi\"]').content:window.location))"
+    "Unlock Journal": "javascript:window.open('https://sci-hub.se/'+(window.location.hostname=='www.sciencedirect.com'?'https://doi.org/'+document.querySelector('meta[name=\"citation_doi\"]').content:window.location))",
     
     "//":"Bookmarklets from Jesse's Bookmarklets Site",
     "View Selection in New Tab": "javascript:(function(){ var d=open().document; d.title='Selection'; if (window.getSelection) { /*Moz*/ var s = getSelection(); for(i=0; i<s.rangeCount; ++i) { var a, r = s.getRangeAt(i); if (!r.collapsed) { var x = document.createElement('div'); x.appendChild(r.cloneContents()); if (d.importNode) x = d.importNode(x, true); d.body.appendChild(x); } } } else { /*IE*/ d.body.innerHTML = document.selection.createRange().htmlText; } })();",
