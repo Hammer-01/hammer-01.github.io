@@ -26,13 +26,12 @@ if (!url || !search) {
     [
         'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/codemirror.min.js', 
         'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/mode/javascript/javascript.min.js'
-    ].forEach(src => {
+    ].forEach((src, i) => {
         let s = document.createElement('script');
         s.src = src;
-        s.async = false;
         document.head.appendChild(s);
+        if (i === 1) s.onload = () => CodeMirror.fromTextArea(document.getElementById('bookmarklet-code'));
     });
-    CodeMirror.fromTextArea(document.getElementById('bookmarklet-code'));
 } else {
     if (document.referrer) pageContent += "wants to redirect you.</p>";
     pageContent += `<p>Click to redirect to <a href="${url}">${dispUrl}</a>.</p>`;
