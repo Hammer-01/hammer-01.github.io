@@ -30,7 +30,7 @@ if (!url || !search) {
         let s = document.createElement('script');
         s.src = src;
         document.head.appendChild(s);
-        if (i === 1) s.onload = () => CodeMirror.fromTextArea(document.getElementById('bookmarklet-code'));
+        if (i === 1) s.onload = () => CodeMirror.fromTextArea(document.getElementById('bookmarklet-code'), {mode: "javascript", lineWrapping: true});
     });
 } else {
     if (document.referrer) pageContent += "wants to redirect you.</p>";
