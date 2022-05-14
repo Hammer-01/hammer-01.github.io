@@ -23,12 +23,15 @@ if (!url || !search) {
     pageContent += "<p><br>The code for the bookmarklet is:</p>";
     pageContent += `<textarea id="bookmarklet-code" style="margin:inherit" cols="60" rows="20" spellcheck="false">${decodeURIComponent(url)}</textarea>`
     document.body.innerHTML = pageContent;
-    let s = document.createElement('script');
-    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/codemirror.min.js';
-    document.head.appendChild(s);
-    s = document.createElement('script');
-    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/mode/javascript/javascript.min.js';
-    document.head.appendChild(s);
+    [
+        'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/codemirror.min.js', 
+        'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/mode/javascript/javascript.min.js'
+    ].forEach(src => {
+        let s = document.createElement('script');
+        s.src = src;
+        s.async = false;
+        document.head.appendChild(s);
+    });
     CodeMirror.fromTextArea(document.getElementById('bookmarklet-code'));
 } else {
     if (document.referrer) pageContent += "wants to redirect you.</p>";
