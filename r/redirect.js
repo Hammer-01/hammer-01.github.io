@@ -10,8 +10,9 @@ if (!url || !search) {
     if (document.referrer) pageContent += `<p>You can <a href="javascript:window.history.back()">return to the previous page</a>.</p>`;
     document.body.innerHTML = pageContent;
 } else if (url.slice(0, 11) === "javascript:") {
-    // Add appropriate title and inject CodeMirror scripts/stylesheet
-    document.head.innerHTML = `<title>${customRedirect ? dispUrl : "Bookmarklet"}</title><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/codemirror.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/mode/javascript/javascript.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/codemirror.min.css">`;
+    // Inject CodeMirror scripts/stylesheet
+    document.head.innerHTML += '<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/codemirror.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/mode/javascript/javascript.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/codemirror.min.css">';
+    document.title = customRedirect ? dispUrl : "Bookmarklet";
     if (customRedirect) url = url.replaceAll('%', '%25').replaceAll('"', '%22');
     pageContent += document.referrer ? "has directed you to this bookmarklet:</p>" : "<p>Below is a bookmarklet - a piece of javascript code that runs when you click it.</p>";
     if (!customRedirect) pageContent += "<p><strong>Warning: make sure you trust the source of this bookmarklet before running it.</strong></p>";
