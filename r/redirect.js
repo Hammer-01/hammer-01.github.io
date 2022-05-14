@@ -10,7 +10,7 @@ if (!url || !search) {
     if (document.referrer) pageContent += `<p>You can <a href="javascript:window.history.back()">return to the previous page</a>.</p>`;
     document.body.innerHTML = pageContent;
 } else if (url.slice(0, 11) === "javascript:") {
-    document.head.innerHTML += '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/codemirror.min.css">';
+    document.head.innerHTML += '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/codemirror.min.css"><style>.CodeMirror {border: 1px solid #ddd; height: auto}</style>';
     document.title = customRedirect ? dispUrl : "Bookmarklet";
     if (customRedirect) url = url.replaceAll('%', '%25').replaceAll('"', '%22');
     pageContent += document.referrer ? "has directed you to this bookmarklet:</p>" : "<p>Below is a bookmarklet - a piece of javascript code that runs when you click it.</p>";
@@ -21,7 +21,7 @@ if (!url || !search) {
         pageContent += `<a href="javascript:(function(){fetch('https://cdn.jsdelivr.net/gh/hammer-01/hammer-01.github.io/r/redirects.json').then(response=>{if(response.ok){return response.text()} ${url}; return false;}).then(text=>{if(text){eval(eval('('+text+')')['${dispUrl}'])}})})()">${dispUrl}</a></p>`;
     }
     pageContent += "<p><br>The code for the bookmarklet is:</p>";
-    pageContent += `<div style="border: 1px solid #ddd; height: auto"><textarea id="bookmarklet-code" style="margin:inherit" cols="60" rows="20" spellcheck="false">${decodeURIComponent(url)}</textarea></div>`
+    pageContent += `<textarea id="bookmarklet-code" style="margin:inherit" cols="60" rows="20" spellcheck="false">${decodeURIComponent(url)}</textarea>`
     document.body.innerHTML = pageContent;
     [
         'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/codemirror.min.js', 
