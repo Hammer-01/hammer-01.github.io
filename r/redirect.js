@@ -29,8 +29,9 @@ if (!url || !search) {
     ].forEach((src, i) => {
         let s = document.createElement('script');
         s.src = src;
+        s.async = false;
         document.head.appendChild(s);
-        if (i === 1) s.onload = () => CodeMirror.fromTextArea(document.getElementById('bookmarklet-code'), {mode: "javascript", lineWrapping: true, viewportMargin: Infinity});
+        if (i === 1) s.onload = () => CodeMirror.fromTextArea(document.getElementById('bookmarklet-code'), {mode: "javascript", lineWrapping: true, viewportMargin: Infinity}).setSize(window.innerWidth/2);
     });
 } else {
     if (document.referrer) pageContent += "wants to redirect you.</p>";
