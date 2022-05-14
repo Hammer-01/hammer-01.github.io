@@ -21,7 +21,7 @@ if (!url || !search) {
         pageContent += `<a href="javascript:(function(){fetch('https://cdn.jsdelivr.net/gh/hammer-01/hammer-01.github.io/r/redirects.json').then(response=>{if(response.ok){return response.text()} ${url}; return false;}).then(text=>{if(text){eval(eval('('+text+')')['${dispUrl}'])}})})()">${dispUrl}</a></p>`;
     }
     pageContent += "<p><br>The code for the bookmarklet is:</p>";
-    pageContent += `<textarea id="bookmarklet-code" style="margin:inherit" cols="60" rows="20" spellcheck="false">${decodeURIComponent(url)}</textarea>`
+    pageContent += `<textarea id="bookmarklet-code" style="margin: inherit" cols="60" rows="20" spellcheck="false">${decodeURIComponent(url)}</textarea>`
     document.body.innerHTML = pageContent;
     [
         'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/codemirror.min.js', 
