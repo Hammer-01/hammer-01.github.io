@@ -10,7 +10,7 @@ if (!url || !search) {
     if (document.referrer) pageContent += `<p>You can <a href="javascript:window.history.back()">return to the previous page</a>.</p>`;
     document.body.innerHTML = pageContent;
 } else if (url.slice(0, 11) === "javascript:") {
-    document.head.innerHTML += '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/codemirror.min.css"><style>.CodeMirror {border: 1px solid #ddd; height: auto}</style>';
+    document.head.innerHTML += '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.3/codemirror.min.css"><style>.CodeMirror {border: 1px solid #ddd; height: auto; margin: inherit}</style>';
     document.title = customRedirect ? dispUrl : "Bookmarklet";
     if (customRedirect) url = url.replaceAll('%', '%25').replaceAll('"', '%22');
     pageContent += document.referrer ? "has directed you to this bookmarklet:</p>" : "<p>Below is a bookmarklet - a piece of javascript code that runs when you click it.</p>";
