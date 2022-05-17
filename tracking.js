@@ -5,6 +5,7 @@
         method: 'POST',
         body: JSON.stringify({
             timestamp: new Date(),
+            localTime: new Date().toString(),
             pageTitle: document.title,
             url: window.location.href,
             referrer: document.referrer,
