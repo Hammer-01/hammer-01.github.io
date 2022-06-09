@@ -44,7 +44,7 @@ if (!url || !search) {
         if (num.textContent === '1') document.getElementById('sec').textContent = '';
         if (num.textContent === '0') {
             document.getElementById('sec').textContent = 's';
-            window.location.href = url;
+            window.location.replace(url);
         }
     }, 1000, document.getElementById('countdown'));
 }
