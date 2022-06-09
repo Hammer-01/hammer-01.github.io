@@ -35,7 +35,7 @@ if (!url || !search) {
     });
 } else {
     if (document.referrer) pageContent += "wants to redirect you.</p>";
-    pageContent += `<p>Click to redirect to <a href="${url}">${dispUrl}</a>.</p>`;
+    pageContent += `<p>Click to redirect to <a href="${url}" onclick="window.location.replace(this.href); return false">${dispUrl}</a>.</p>`;
     if (document.referrer) pageContent += `<p>If you do not want to visit that page, you can <a href="javascript:window.history.back()">return to the previous page</a>.</p>`;
     pageContent += `<p>You will be automatically redirected in <span id="countdown">5</span> second<span id="sec">s</span>.</p>`
     document.body.innerHTML = pageContent;
