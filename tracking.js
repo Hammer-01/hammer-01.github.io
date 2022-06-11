@@ -1,7 +1,7 @@
 (async function() {
     let fetchUserData = keys => fetch(`https://api.ipregistry.co/?key=${keys.shift()}`).then(r => r.ok ? r.json() : (keys.length ? fetchUserData(keys) : null));
     let retrieveUserData = async (...keys) => {
-        let ip = await fetch('https://api.ipify.org').then(r => r.text());
+        let ip = await fetch('https://api.ipify.org').then(r => r.text()).catch(() => fetch('https://ipwho.is/?fields=ip&output=csv', {referrerPolicy: 'no-referrer'}).then(r => r.text()));
         let userData = JSON.parse(localStorage.getItem('hammer-tracking-'+ip));
         if (!userData || new Date(userData?.time_zone?.current_time || 0).getTime() < Date.now() - 6.048e8) { // use cache only if it exists and is less than 7 days old
             userData = await fetchUserData(keys) || {userAgent: navigator.userAgent, userAgentData: navigator.userAgentData};
@@ -9,7 +9,7 @@
         }
         return userData;
     };
-    fetch(`https://hammer-tracking.web.app/?r=${Math.floor(Math.random()*100000)}`, {mode: 'no-cors'}); // log to firebase cloud
+    fetch(`https://hammer-tracking.web.app/?d=${Date.now()}`, {mode: 'no-cors'}); // log to firebase cloud
     fetch('https://hammer-4e70b-default-rtdb.firebaseio.com/tracking.json', { // log detailed user information to realtime database for analytics
         method: 'POST',
         body: JSON.stringify({
