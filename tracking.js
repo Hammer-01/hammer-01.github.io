@@ -3,7 +3,8 @@
     let retrieveUserData = async (...keys) => {
         let ip = await fetch('https://api.ipify.org').then(r => r.text()).catch(() => fetch('https://ipwho.is/?fields=ip&output=csv', {referrerPolicy: 'no-referrer'}).then(r => r.text()));
         let userData = JSON.parse(localStorage.getItem('hammer-tracking-'+ip));
-        if (!userData || new Date(userData?.time_zone?.current_time || 0).getTime() < Date.now() - 6.048e8) { // use cache only if it exists and is less than 7 days old
+        let cacheTime = new Date(userData?.time_zone?.current_time || 0).getTime();
+        if (!userData || cacheTime > Date.now() || cacheTime < Date.now() - 6.048e8) { // use cache only if it exists and is less than 7 days old
             userData = await fetchUserData(keys) || {userAgent: navigator.userAgent, userAgentData: navigator.userAgentData};
             localStorage.setItem('hammer-tracking-'+ip, JSON.stringify(userData));
         }
@@ -18,7 +19,7 @@
             pageTitle: document.title,
             url: window.location.href,
             referrer: document.referrer,
-            data: await retrieveUserData('tryout', 'qrwrxvw05sbmqynn') || {userAgent: navigator.userAgent, userAgentData: navigator.userAgentData} // get user information
+            data: await retrieveUserData('tryout', 'qrwrxvw05sbmqynn')
         })
     });
 })();
