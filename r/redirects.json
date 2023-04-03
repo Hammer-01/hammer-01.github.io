@@ -8,6 +8,7 @@
     "Joke": "javascript:fetch('https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,racist,religious,explicit&format=txt').then(response => response.text()).then(text => alert(text))",
     "Edit Page": "javascript:document.designMode='on'; document.body.spellcheck=confirm('Spellcheck?');",
     "Unlock Journal": "javascript:window.location.hostname!='sci-hub.se'?window.open('https://sci-hub.se/'+(document.querySelectorAll('meta[name=\"citation_doi\"i],meta[name=\"dc.identifier\"i]')[0]?.content||document.querySelector('meta[name*=\"doi\"i]')?.content||window.location)):window.open(document.querySelector('embed').src.split('#')[0],'_self')",
+    "Change Video Speed": "javascript:(()=>{let vids=document.querySelectorAll('video'); r=prompt(`Enter playback rate (currently ${vids[0].playbackRate}x, valid range is 0.0625-16.0):`)||vids[0].playbackRate; vids.forEach(v=>v.playbackRate=r)})()",
     
     "//":"Bookmarklets from Jesse's Bookmarklets Site",
     "View Selection in New Tab": "javascript:(function(){ var d=open().document; d.title='Selection'; if (window.getSelection) { /*Moz*/ var s = getSelection(); for(i=0; i<s.rangeCount; ++i) { var a, r = s.getRangeAt(i); if (!r.collapsed) { var x = document.createElement('div'); x.appendChild(r.cloneContents()); if (d.importNode) x = d.importNode(x, true); d.body.appendChild(x); } } } else { /*IE*/ d.body.innerHTML = document.selection.createRange().htmlText; } })();",
