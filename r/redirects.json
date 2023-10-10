@@ -9,7 +9,7 @@
     "Edit Page": "javascript:document.designMode='on'; document.body.spellcheck=confirm('Spellcheck?');",
     "Unlock Journal": "javascript:window.location.hostname!='sci-hub.se'?window.open('https://sci-hub.se/'+(document.querySelectorAll('meta[name=\"citation_doi\"i],meta[name=\"dc.identifier\"i]')[0]?.content||document.querySelector('meta[name*=\"doi\"i]')?.content||window.location)):window.open(document.querySelector('embed').src.split('#')[0],'_self')",
     "Change Video Speed": "javascript:(()=>{let vids=document.querySelectorAll('video'); r=prompt(`Enter playback rate (currently ${vids[0].playbackRate}x, valid range is 0.0625-16.0):`)||vids[0].playbackRate; vids.forEach(v=>v.playbackRate=r)})()",
-    "Fast Forward":"javascript:document.querySelectorAll('video').forEach(v=>v.playbackRate=16)",
+    "Fast Forward":"javascript:document.querySelectorAll('video').forEach(v=>v.playbackRate=v.playbackRate==16?1:16)",
     "Skip Video":"javascript:(()=>{v=document.querySelector('video'); v.currentTime=v.duration})()",
     
     "//":"Bookmarklets from Jesse's Bookmarklets Site",
