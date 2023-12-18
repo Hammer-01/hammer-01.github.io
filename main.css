@@ -2,7 +2,7 @@
   color-scheme: light dark;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6, p, li {
   font-family: "Segoe UI", Verdana;
   margin: inherit;
 }
