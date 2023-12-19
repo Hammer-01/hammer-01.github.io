@@ -101,9 +101,9 @@ function quizTypeIs(quizType) {
 function clickElement(selector, opts) {
     let id = setInterval(() => {
         let elm = document.querySelector(selector);
-        if (elm && opts.stopOnClick) clearInterval(id);
+        if (elm && opts?.stopOnClick) clearInterval(id);
         elm?.click();
-        if (opts.conditionFn()) clearInterval(id);
+        if (opts?.conditionFn?.()) clearInterval(id);
     }, 50);
 }
 
