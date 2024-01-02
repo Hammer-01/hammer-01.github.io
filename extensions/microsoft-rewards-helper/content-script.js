@@ -14,7 +14,7 @@ if (location.pathname === '/search') {
         clickElement('.rqOption:not(.optionDisable)');
     }
     
-    else if (quizTypeIs('ThisOrThat')) {
+    else if (quizTypeIs('ThisOrThat') || quizTypeIs('ThisorThat')) {
         // get the question information
         let questionElm = document.querySelector(".bt_queText");
         let [opt1, opt2] = [...document.querySelectorAll(".btOptionText")].map(x => x.textContent);
@@ -94,7 +94,7 @@ function quizTypeIs(quizType) {
     let paramsString = params.toString();
     // Remove inconsistent country code (e.g. EN_AU/ENAU) and day-dependent pre-bonus text
     paramsString = paramsString.replaceAll(/_[A-Z]{2}_?[A-Z]{2}_(.*(?=Bonus))*/g, '');
-
+    
     return paramsString.includes('REWARDSQUIZ' + quizType);
 }
 
