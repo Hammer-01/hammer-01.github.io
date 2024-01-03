@@ -1,0 +1,25 @@
+div:has(> #extensionUpdateNotice) {
+    display: flex;
+}
+
+#extensionUpdateNotice {
+    margin-left: auto;
+    max-width: 50%;
+}
+
+#extensionUpdateNotice > h2 {
+    padding-top: 15px;
+}
+
+#extensionUpdateNotice a {
+    color: #0067b8;
+    font-weight: 600;
+}
+
+#extensionUpdateNotice a:not([href="#"]) {
+    text-decoration-line: underline;
+}
+
+#extensionUpdateNotice p {
+    margin-bottom: 5px;
+}

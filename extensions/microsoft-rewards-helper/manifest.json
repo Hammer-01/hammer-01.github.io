@@ -1,18 +1,31 @@
 {
     "name": "Microsoft Rewards Helper",
     "description": "Helps speed up completion of microsoft rewards",
-    "version": "1.0",
+    "version": "1.1",
     "manifest_version": 3,
     "content_scripts": [
         {
             "matches": ["*://*.bing.com/*"],
             "js": ["content-script.js"]
+        },
+        {
+            "matches": ["*://rewards.bing.com/*"],
+            "js": ["update_script.js"],
+            "css": ["update_style.css"]
         }
     ],
-    "permissions": ["tabs"],
+    "permissions": ["tabs", "storage"],
     "action": {},
     "background": {
         "service_worker": "background.js"
+    },
+    "commands": {
+        "random-search": {
+            "description": "Search for a random word",
+            "suggested_key": {
+                "default": "Alt+S"
+            }
+        }
     },
     "icons": {
         "64": "icon.png"

@@ -74,20 +74,6 @@ if (location.pathname === '/search') {
                                parseInt(document.querySelector('.rqMCredits')?.textContent) > 0
         });
     }
-
-    // Search points - currently deprecated
-    if (params.has('extensionsearchpoints')) {
-        let numSearches = params.get('extensionsearchpoints');
-        console.log(chrome);
-        if (numSearches < 30) {
-            setTimeout(async () => {
-                let query = Math.random();
-                query = (await fetch('https://random-word-api.herokuapp.com/word').then(r => r.json()))[0]; // temp, will remove
-                window.open(`https://www.bing.com/search?extensionsearchpoints=${++numSearches}&FORM=ANNTA1&q=${query}`);
-                window.close();
-            }, 2000);
-        }
-    }
 }
 
 function quizTypeIs(quizType) {
