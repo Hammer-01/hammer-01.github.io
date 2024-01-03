@@ -22,3 +22,17 @@ h1, h2, h3, h4, h5, h6, p, li {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Taken from https://phuoc.ng/collection/css-animation/highlighting-target-element/ */
+:target {
+  animation: highlight 3s ease-in-out;
+}
+
+@keyframes highlight {
+  from {
+    background-color: rgb(253 224 71);
+  }
+  to {
+    background-color: unset;
+  }
+}
