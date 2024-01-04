@@ -1,0 +1,11 @@
+#QuizContainerWrapper, #b_header, main > :not(#b_results), .b_ans:has(.b_promtxt) {
+    display: none !important;
+}
+
+li.b_ans.b_topborder {
+    margin-top: 0 !important;
+}
+
+#b_content {
+    padding: 0 !important;
+}

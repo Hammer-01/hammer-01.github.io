@@ -28,20 +28,16 @@ if (location.pathname === '/search') {
         panel.after(rightFrame);
         leftFrame.style = rightFrame.style = 'position: absolute; bottom: 0; height: 100%';
         rightFrame.style.right = 0;
-        leftFrame.onload = rightFrame.onload = function() {
-            // hide the popup that gets in the way and the padding that goes
-            // before the useful results on a page
-            let hintFrameCleaner = document.createElement('style');
-            hintFrameCleaner.textContent = '#QuizContainerWrapper, #b_header, main > :not(#b_results), .b_ans:has(.b_promtxt) {display: none !important}';
-            hintFrameCleaner.textContent += 'li.b_ans.b_topborder {margin-top: 0 !important} #b_content {padding: 0}';
-            this.contentDocument.head.appendChild(hintFrameCleaner);
-        };
 
         // update the url of the iframes if the characteristic changes
         // and store the new value
         let updateCharacteristic = characteristic => {
-            // let characteristic = params.get('extensioncharacteristic');
-            let searchUrl = 'https://www.bing.com/search?q=';
+            // include the extensionhintiframe parameter to trigger the css which
+            // hides the popup that gets in the way and the padding that goes
+            // before the useful results on a page. The FORM parameter is also
+            // included to allow the collection pf points for doing searches
+            // (see the 'random-search' command in background.js for more info)
+            let searchUrl = 'https://www.bing.com/search?extensionhintiframe=&FORM=ANNTA1&q=';
             leftFrame.src = `${searchUrl}${opt1}+${characteristic}`;
             rightFrame.src = `${searchUrl}${opt2}+${characteristic}`;
             sessionStorage.setItem('extensioncharacteristic', characteristic);
