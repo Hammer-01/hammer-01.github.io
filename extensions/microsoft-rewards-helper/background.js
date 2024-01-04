@@ -10,8 +10,6 @@ chrome.action.onClicked.addListener(async tab => {
     [tab] = await chrome.tabs.query({url: `*://${domain}/*`, currentWindow: true});
     if (tab) chrome.tabs.update(tab.id, {active: true});
     else chrome.tabs.create({url: `https://${domain}`});
-
-
 });
 
 chrome.commands.onCommand.addListener(command => {

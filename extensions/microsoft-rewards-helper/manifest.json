@@ -1,7 +1,7 @@
 {
     "name": "Microsoft Rewards Helper",
     "description": "Helps speed up completion of microsoft rewards",
-    "version": "1.1",
+    "version": "1.1.1",
     "manifest_version": 3,
     "content_scripts": [
         {
@@ -11,7 +11,8 @@
         {
             "matches": ["*://rewards.bing.com/*"],
             "js": ["update_script.js"],
-            "css": ["update_style.css"]
+            "css": ["update_style.css"],
+            "run_at": "document_end"
         }
     ],
     "permissions": ["tabs", "storage"],

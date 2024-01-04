@@ -20,6 +20,6 @@ div:has(> #extensionUpdateNotice) {
     text-decoration-line: underline;
 }
 
-#extensionUpdateNotice p {
+#extensionUpdateNotice p:not(:last-child) {
     margin-bottom: 5px;
 }
