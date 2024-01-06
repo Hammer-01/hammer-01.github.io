@@ -1,8 +1,11 @@
 console.log('Hello from microsoft rewards extension!');
 
+let points = '-1'; // placeholder value
 let params = new URLSearchParams(location.search);
 params.delete('q'); // avoid false positives when searching the params
 
+// make sure we are actually on a search, e.g. not at /search/somethingelse
+// which the content script will still be injected into
 if (location.pathname === '/search') {
     if (quizTypeIs('MicrosoftRewardsQuizCB') || quizTypeIs('Bonus')) { // bonus quiz, several correct options per question
         // click as many as possible before reload
@@ -70,6 +73,10 @@ if (location.pathname === '/search') {
                                parseInt(document.querySelector('.rqMCredits')?.textContent) > 0
         });
     }
+
+    // update the points badge
+    const pointsObserver = new MutationObserver(updatePoints);
+    pointsObserver.observe(document.getElementById('id_rc'), {childList: true});
 }
 
 function quizTypeIs(quizType) {
@@ -87,6 +94,17 @@ function clickElement(selector, opts) {
         elm?.click();
         if (opts?.conditionFn?.()) clearInterval(id);
     }, 50);
+}
+
+function updatePoints(changes) {
+    changes.forEach(c => c.addedNodes.forEach(n => {
+        // only update the score if the point count actually changes, otherwise
+        // we would unnecessarily be trying to update hundreds of times
+        if (n.data !== points) {
+            points = n.data;
+            chrome.storage.local.set({points});
+        }
+    }));
 }
 
 // Example quiz urls

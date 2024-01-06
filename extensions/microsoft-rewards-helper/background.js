@@ -1,3 +1,4 @@
+// open/switch to rewards tab when icon is clicked
 chrome.action.onClicked.addListener(async tab => {
     let domain = 'rewards.bing.com';
     
@@ -12,6 +13,24 @@ chrome.action.onClicked.addListener(async tab => {
     else chrome.tabs.create({url: `https://${domain}`});
 });
 
+// display and receive updates for the point count as a badge
+chrome.storage.local.get('points').then(({points}) => setBadgePoints(points));
+chrome.storage.onChanged.addListener(({points}) => {
+    if (points) {
+        setBadgePoints(points.newValue);
+    }
+});
+
+function setBadgePoints(points) {
+    let text = points?.toString() ?? '';
+    if (text.length >= 6) {
+        // if it's too long to fit, represent it in thousands
+        text = text.slice(0, -3) + 'k'; 
+    }
+    chrome.action.setBadgeText({text});
+}
+
+// respond to keyboard shortcut events
 chrome.commands.onCommand.addListener(command => {
     if (command === 'random-search') {
         // fetch a random word then open a new tab an search it. The form parameter is
@@ -25,6 +44,7 @@ chrome.commands.onCommand.addListener(command => {
     }
 });
 
+// check for updates on startup
 chrome.runtime.onStartup.addListener(async () => {
     // check for updates when browser restarts if not disabled
     let {noUpdate} = await chrome.storage.local.get('noUpdate');
