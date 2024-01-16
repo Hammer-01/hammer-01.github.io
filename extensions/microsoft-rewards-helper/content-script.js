@@ -81,8 +81,8 @@ if (location.pathname === '/search') {
 
 function quizTypeIs(quizType) {
     let paramsString = params.toString();
-    // Remove inconsistent country code (e.g. EN_AU/ENAU) and day-dependent pre-bonus text
-    paramsString = paramsString.replaceAll(/_[A-Z]{2}_?[A-Z]{2}_(.*(?=Bonus))*/g, '');
+    // Remove inconsistent country code (e.g. EN_AU/EN-AU/ENAU) and day-dependent pre-bonus text
+    paramsString = paramsString.replaceAll(/_[A-Z]{2}(_|-)?[A-Z]{2}_(.*(?=Bonus))*/g, '');
     
     return paramsString.includes('REWARDSQUIZ' + quizType);
 }
