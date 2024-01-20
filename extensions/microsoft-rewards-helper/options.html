@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Microsoft Rewards Helper Settings</title>
+    <script src="options.js" defer></script>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <header>
+      <img src="icon.png">
+      <h1>Microsoft Rewards Helper Extension Settings</h1>
+    </header>
+    <main>
+      <div class="li">
+        <input id="checkForUpdates" type="checkbox">
+        <label for="checkForUpdates">Check for updates to this extension every time you relaunch your browser</label>
+      </div>
+      <div class="li">
+        <input id="searchNewTab" type="checkbox">
+        <label for="searchNewTab">Open random searches in a new tab</label>
+      </div>
+      <div class="li">
+        <input id="autoCompleteActivities" type="checkbox">
+        <label for="autoCompleteActivities">Automatically complete all available activities on the homepage</label>
+      </div>
+      <div class="li sub">
+        <input type="checkbox" id="includePollInAutoComplete">
+        <label for="includePollInAutoComplete">Include the daily poll in the automatically completed activities</label>
+      </div>
+    </main>
+  </body>
+</html>

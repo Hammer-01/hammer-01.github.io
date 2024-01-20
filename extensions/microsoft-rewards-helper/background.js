@@ -31,15 +31,19 @@ function setBadgePoints(points) {
 }
 
 // respond to keyboard shortcut events
-chrome.commands.onCommand.addListener(command => {
+chrome.commands.onCommand.addListener(async command => {
     if (command === 'random-search') {
-        // fetch a random word then open a new tab an search it. The form parameter is
-        // required to earn points (value doesn't matter but is normally ANNTA1)
+        // fetch a random word then open a new tab, or use the current tab
+        // depending on the setting, and search it. The form parameter is required
+        // to earn points (value doesn't matter but is normally ANNTA1)
+        let {searchNewTab} = await chrome.storage.local.get('searchNewTab');
         fetch('https://random-word-api.herokuapp.com/word')
             .then(r => r.json())
             .catch(() => ['fallback']) // use 'fallback' if api is unavailable
             .then(wordArr => {
-                chrome.tabs.create({url: 'https://www.bing.com/search?FORM=ANNTA1&q=' + wordArr[0]});
+                let url = 'https://www.bing.com/search?FORM=ANNTA1&q=' + wordArr[0];
+                if (searchNewTab) chrome.tabs.create({url});
+                else chrome.tabs.update({url});
             });
     }
 });
@@ -47,8 +51,8 @@ chrome.commands.onCommand.addListener(command => {
 // check for updates on startup
 chrome.runtime.onStartup.addListener(async () => {
     // check for updates when browser restarts if not disabled
-    let {noUpdate} = await chrome.storage.local.get('noUpdate');
-    if (noUpdate) return;
+    let {checkForUpdates} = await chrome.storage.local.get('checkForUpdates');
+    if (!checkForUpdates) return;
 
     // fetch manifest from github
     const manifestUrl = 'https://raw.githubusercontent.com/Hammer-01/hammer-01.github.io/main/extensions/microsoft-rewards-helper/manifest.json';
@@ -56,4 +60,26 @@ chrome.runtime.onStartup.addListener(async () => {
         .then(r => r.json())
         .then(manifest => manifest.version);
     chrome.storage.local.set({newVersion});
+});
+
+chrome.runtime.onInstalled.addListener(({reason}) => {
+    if (reason === 'install') {
+        // setup default settings
+        chrome.storage.local.set({
+            searchNewTab: true,
+            checkForUpdates: true,
+            autoCompleteActivities: false,
+            includePollInAutoComplete: true
+        });
+
+        // attempt to get point count from getuserinfo endpoint
+        // add it to the storage so we have a badge straight away
+        // todo: further research on the `type` parameter is required
+        fetch('https://rewards.bing.com/api/getuserinfo?type=1')
+            .then(r => r.json())
+            .then(data => {
+                let points = data.dashboard?.userStatus?.availablePoints;
+                if (points) chrome.storage.local.set({points});
+            });
+    }
 });

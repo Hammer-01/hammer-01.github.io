@@ -1,0 +1,42 @@
+header {
+    display: flex;
+    padding: 5px;
+}
+
+main {
+    padding: 5px;
+    font-size: 1rem;
+}
+
+h1 {
+    font-family: Segoe UI,SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #000;
+    box-sizing: inherit;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 600;
+}
+
+header > img {
+    margin-right: 10px;
+}
+
+.li, .sub {
+    display: flex;
+    margin: 10px 0;
+}
+
+.sub {
+    margin-left: 30px;
+}
+
+label {
+    margin-left: 5px;
+}
+
+input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+}

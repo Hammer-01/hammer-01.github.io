@@ -34,9 +34,9 @@ if (newVersion) {
                 clearInterval(id);
                 elm.appendChild(updateNotice);
                 document.getElementById('extensionNoUpdateLink').onclick = () => {
-                    // hide the notice and set the noUpdate flag
+                    // hide the notice and set the checkForUpdates flag
                     updateNotice.hidden = true;
-                    chrome.storage.local.set({noUpdate: true});
+                    chrome.storage.local.set({checkForUpdates: false});
                 };
                 document.getElementById('extensionHideNoticeLink').onclick = () => {
                     updateNotice.hidden = true;
