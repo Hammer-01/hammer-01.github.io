@@ -68,7 +68,7 @@ chrome.runtime.onInstalled.addListener(({reason}) => {
         chrome.storage.local.set({
             searchNewTab: true,
             checkForUpdates: true,
-            autoCompleteActivities: false,
+            autoCompleteActivities: true,
             includePollInAutoComplete: true
         });
 
