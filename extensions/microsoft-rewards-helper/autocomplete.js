@@ -5,7 +5,8 @@ let includePoll = document.currentScript.dataset.hasOwnProperty('includePoll');
 let numTries = 0;
 let id = setInterval(() => {
     // click on all the `urlreward` cards which just require a click to earn points
-    let clicks = clickValidCards(Object.values(dashboard.dailySetPromotions)[0]);
+    let dailySetKey = (new Date).toLocaleDateString('en-US', {day: '2-digit', month: '2-digit', year: 'numeric'});
+    let clicks = clickValidCards(dashboard.dailySetPromotions[dailySetKey]);
     clicks += clickValidCards(dashboard.morePromotions);
 
     // make the info on the page update
