@@ -1,6 +1,5 @@
 console.log('Hello from microsoft rewards extension!');
 
-let points = '-1'; // placeholder value
 let params = new URLSearchParams(location.search);
 params.delete('q'); // avoid false positives when searching the params
 
@@ -38,7 +37,7 @@ if (location.pathname === '/search') {
             // include the extensionhintiframe parameter to trigger the css which
             // hides the popup that gets in the way and the padding that goes
             // before the useful results on a page. The FORM parameter is also
-            // included to allow the collection pf points for doing searches
+            // included to allow the collection of points for doing searches
             // (see the 'random-search' command in background.js for more info)
             let searchUrl = 'https://www.bing.com/search?extensionhintiframe=&FORM=ANNTA1&q=';
             leftFrame.src = `${searchUrl}${opt1}+${characteristic}`;
@@ -73,10 +72,6 @@ if (location.pathname === '/search') {
                                parseInt(document.querySelector('.rqMCredits')?.textContent) > 0
         });
     }
-
-    // update the points badge
-    const pointsObserver = new MutationObserver(updatePoints);
-    pointsObserver.observe(document.getElementById('id_rc'), {childList: true});
 }
 
 function quizTypeIs(quizType) {
@@ -96,16 +91,6 @@ function clickElement(selector, opts) {
     }, 50);
 }
 
-function updatePoints(changes) {
-    changes.forEach(c => c.addedNodes.forEach(n => {
-        // only update the score if the point count actually changes, otherwise
-        // we would unnecessarily be trying to update hundreds of times
-        if (n.data !== points) {
-            points = n.data;
-            chrome.storage.local.set({points});
-        }
-    }));
-}
 
 // Example quiz urls
 // https://www.bing.com/search?q=Chile&filters=BTQI%3A%220%22+BTCI%3A%221%22+ShowTimesTaskPaneTrigger%3A%22false%22&skipopalnative=true&rnoreward=1&FORM=ML151V&BTCA=0&BTSPC=0&BTC_BTCQC=0&BTC_BTQID=REWARDSQUIZ_ENAU_MicrosoftRewardsQuizCB_20231205&BTC_BTOID=Gamification_DailySet_ENAU_20231205_Child2&BTC_RA=quiz&BTC_BTEC=0&BTC_BTMC=30&BTC_BTQN=1&BTC_BTCO=2&BTC_BTRACI=1&BTC_BTIOM=0
