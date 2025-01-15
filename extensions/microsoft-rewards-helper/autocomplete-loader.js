@@ -6,6 +6,6 @@ chrome.storage.local.get(['autoCompleteActivities', 'includePollInAutoComplete']
         let s = document.createElement('script');
         s.src = chrome.runtime.getURL('autocomplete.js');
         if (includePollInAutoComplete) s.dataset.includePoll = '';
-        s.onload = () => s.remove();
+        s.onload = s.remove;
         document.head.appendChild(s);
     });
